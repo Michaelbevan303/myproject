@@ -1,0 +1,94 @@
+<html>
+<head>
+    <title>BMI</title>
+    <link rel="stylesheet" href="bmi.css">
+    <script>
+        function subm()
+        {
+         
+            if( document.fom.ag.value == "" || isNaN( document.fom.ag.value ))
+             {
+          alert( "Please provide your age" );
+         return false;
+      }
+            var gen=  document.getElementsByName("gen[]");
+            var Gen= 0
+        
+        for (var i = 0; i < gen.length; i++) {
+            if (gen[i].checked) {
+                Gen++;
+            }
+        }
+      if (Gen == 0) {
+            alert("please choose gender");
+            return false;
+      } 
+       var height=document.getElementById("inputbox");
+        if(height.value =="" || isNaN(height.value))
+        {
+            alert("Enter your Height");
+            return false;
+        }
+        var weight=document.getElementById("intbox");
+        if(weight.value =="" || isNaN(weight.value)){
+            alert("Enter your weight");
+            return false;
+        }
+        var age=document.getElementById("age").value;
+        var gender=document.getElementById("gender").value;
+        var height=document.getElementById("inputbox").value;
+        var weight=document.getElementById("intbox").value;
+        var ht=(height/100);
+        var bmi=(weight/((ht)**2));
+    
+    
+        var NewRow=document.getElementById("tble");
+        var row=NewRow.insertRow(1);
+        var cell1=row.insertCell(0);
+        var cell2=row.insertCell(1);
+        var cell3=row.insertCell(2);
+        var cell4=row.insertCell(3);
+        var cell5=row.insertCell(4);
+        cell1.innerHTML=Age;
+        cell2.innerHTML=Gender;
+        cell3.innerHTML=Height;
+        cell4.innerHTML=Weight;
+        cell5.innerHTML=Bmi;
+
+        return true;
+    }
+    </script>
+</head>
+<body>
+    <div class="div">
+       
+       <form name="fom" action="Bmi2.html" onsubmit="return subm();">
+        <h1>BMI Calculator</h1><br>
+        <div class="div1">
+        <input type="text" id="age" name="ag" placeholder="Enter Age"><br><br>
+        <input type="text" id="inputbox" placeholder="Enter Height"><br><br>
+        <input type="text" id="intbox" placeholder="Enter Weight"><br><br>
+        </div>
+        <div class="div2">
+        <input type="radio" name="gen[]" id="gender" value="male">Male
+        <input type="radio" name="gen[]" id="gender" value="female">Female<br>
+        </div>
+        </br><br>
+        <div class="button">
+        <input type="submit" name="submit" value="Calculate">
+        </div>
+       </form>
+       </div>
+       <div id="tble">
+        <table>
+            <tr>
+                <td>Age</td>
+                <td>Gender</td>
+                <td>Height</td>
+                <td>Weight</td>
+                <td>Calculated BMI</td>
+            </tr>
+        </table>
+       </div>
+</body>
+</html>
